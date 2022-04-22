@@ -1,0 +1,10 @@
+<p-card header="Realizar deposito" [style]="{'width': '35rem', 'margin': 'auto', 'margin-top': '2em'}">
+    <div class="container">
+        <h6>Monto</h6>
+        <p-inputNumber [(ngModel)]="operation.monto" class="p-inputtext-sm" inputId="locale-us" mode="decimal" locale="en-US" [minFractionDigits]="2" [min]="0">
+        </p-inputNumber>
+        <div>
+            <p-button label="Depositar" [style]="{ 'margin': 'auto', 'margin-top': '2em'}" styleClass="p-button-sm" (onClick)="deposit()"></p-button>
+        </div>
+    </div>
+</p-card>

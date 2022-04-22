@@ -1,0 +1,11 @@
+<p-card header="Iniciar Sesion" [style]="{'width': '35rem', 'margin': 'auto', 'margin-top': '2em'}">
+    <div class="container">
+        <h5>Email</h5>
+        <input type="text" pInputText  class="p-inputtext-sm" [(ngModel)]="email">
+        <h5 style="margin-top:1em">Contraseña</h5>
+        <p-password [(ngModel)]="password" class="p-inputtext-sm"> [feedback]="false"></p-password>
+        <div>
+            <p-button label="Ingresar" [style]="{ 'margin': 'auto', 'margin-top': '2em'}" styleClass="p-button-sm" (Click)="validateUser()"></p-button>
+        </div>
+    </div>
+</p-card>

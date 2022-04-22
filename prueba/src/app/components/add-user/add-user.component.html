@@ -1,0 +1,20 @@
+<p-card header="Registro del cliente" [style]="{'width': '35rem', 'margin': 'auto', 'margin-top': '2em'}">
+    <div class="container">
+        <h6>ID</h6>
+        <p-inputNumber [(ngModel)]="user.id" class="p-inputtext-sm" [format]="false">
+        </p-inputNumber>
+        <h6 style="margin-top: 10px;">Nombre completo</h6>
+        <input type="text" pInputText class="p-inputtext-sm" [(ngModel)]="user.name">
+        <h6 style="margin-top: 10px;">Direccion</h6>
+        <input type="text" pInputText class="p-inputtext-sm" [(ngModel)]="user.address">
+        <h6 style="margin-top: 10px;">Edad</h6>
+        <p-inputNumber [(ngModel)]="user.age" class="p-inputtext-sm" [format]="false" [min]="1">
+        </p-inputNumber>
+        <h6 style="margin-top: 10px;">Genero</h6>
+        <p-dropdown [options]="options" [(ngModel)]="user.gender"></p-dropdown>
+        <div>
+            <p-button label="Crear cliente" [style]="{ 'margin': 'auto', 'margin-top': '2em'}" styleClass="p-button-sm"
+                (Click)="createUser()"></p-button>
+        </div>
+    </div>
+</p-card>
