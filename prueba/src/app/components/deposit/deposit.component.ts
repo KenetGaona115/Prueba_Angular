@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Operation } from 'src/app/interfaces/operations.interface';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -12,20 +13,33 @@ export class DepositComponent implements OnInit {
   operation: Operation = {
     fechaUltimaAct: this.api_service.getDateFormat(),
     monto: 0,
-    numeroCuenta: 0,
+    numeroCuenta: '',
     terminal: 'TERM235',
     tipo: 'Deposito',
     usuario: "u-231"
   };
   constructor(
-    private api_service: ApiServiceService
+    private api_service: ApiServiceService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
   }
 
   deposit(): void {
-    console.log(this.operation);
+    if (localStorage.getItem('numeroCuenta'))
+      this.api_service.createOperation(this.operation)
+        .subscribe(
+          {
+            next: (response: any) => {
+              const saldo = localStorage.getItem('saldo')
+              localStorage.setItem('saldo', (parseFloat(saldo!) + this.operation.monto).toString())
+              console.log(response)
+            },
+          }
+        )
+    else
+      this.router.navigate(['addAccount'])
   }
 
 }

@@ -13,6 +13,8 @@ export class AuthService {
   ) { }
 
   url_login: string = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB-p8CKoaQr097NJ8YJRpoWpezJj5xRRUI'
+  loged: boolean = false
+
   login(body: any) {
     return this.http.post<any>(this.url_login, body)
   }
@@ -29,8 +31,12 @@ export class AuthService {
     localStorage.clear();
   }
 
-  saveAccountNumber(accountNumber: string){
+  saveAccountNumber(accountNumber: string) {
     localStorage.setItem('numeroCuenta', accountNumber);
+  }
+
+  isLoggedIn() {
+    return JSON.parse(localStorage.getItem('user')!) ? true : false;
   }
 
 }

@@ -17,6 +17,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {DropdownModule} from 'primeng/dropdown';
 import {TableModule} from 'primeng/table';
+import { ListAccountsComponent } from './list-accounts/list-accounts.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {TableModule} from 'primeng/table';
     AddAccountComponent,
     DepositComponent,
     WithdrawalComponent,
-    RecordComponent
+    RecordComponent,
+    ListAccountsComponent
   ],
   imports: [
     CommonModule,

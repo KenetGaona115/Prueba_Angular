@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
   }
 
   createUser(): void {
-
+    console.log(this.user);
   }
 
 }

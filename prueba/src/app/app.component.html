@@ -1,6 +1,8 @@
-<div class="layout-wrapper">
+<div class="layout-wrapper" [ngStyle]="{'display':isLoged?'block':'none'}">
   <app-topbar></app-topbar>
   <div class="container">
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<router-outlet [ngStyle]="{'display':!isLoged?'block':'none'}"></router-outlet>

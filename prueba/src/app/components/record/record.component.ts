@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Account } from 'src/app/interfaces/account.interface';
+import { Router } from '@angular/router';
 import { Operation } from 'src/app/interfaces/operations.interface';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -11,24 +11,32 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 export class RecordComponent implements OnInit {
 
   constructor(
-    private api: ApiServiceService
+    private api: ApiServiceService,
+    private router: Router
   ) { }
 
-  recordArray: Account[] = []
+  recordArray: Operation[] = []
+  saldo = localStorage.getItem('saldo')
 
   ngOnInit(): void {
-    this.api.getRecord().subscribe(
-      {
-        next: (record: Operation[]) => {
-          let numeroCuenta = localStorage.getItem('numeroCuenta');
-          Object.values(record).forEach(element => {
-            if (element)
-              this.recordArray.push();
-          });
-          console.log(this.recordArray)
+
+    if (localStorage.getItem('numeroCuenta'))
+      this.api.getRecord().subscribe(
+        {
+          next: (record: Operation[]) => {
+            let numeroCuenta = localStorage.getItem('numeroCuenta');
+            Object.values(record).forEach((element: Operation) => {
+              if (element.numeroCuenta == numeroCuenta) {
+                this.recordArray.push(element);
+              }
+
+            });
+            console.log(this.recordArray)
+          }
         }
-      }
-    )
+      )
+    else
+        this.router.navigate(['addAccount'])
   }
 
 }

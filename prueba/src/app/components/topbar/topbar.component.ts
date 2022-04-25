@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MegaMenuItem } from 'primeng/api';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-topbar',
@@ -9,16 +10,13 @@ import { MegaMenuItem } from 'primeng/api';
 export class TopbarComponent implements OnInit {
 
   constructor(
+    private auth: AuthService
   ) { }
 
   items!: MegaMenuItem[];
 
   ngOnInit(): void {
     this.items = [
-      {
-        label: 'Iniciar sesion', icon: 'pi pi-user',
-        routerLink: ['login']
-      },
       {
         label: 'Alta de clientes', icon: 'pi pi-user-plus',
         routerLink: ['addUser']
@@ -46,6 +44,15 @@ export class TopbarComponent implements OnInit {
         label: 'Historial', icon: 'pi pi-history',
         routerLink: ['record']
       },
+      {
+        label: 'Lista de cuentas', icon: 'pi pi-book',
+        routerLink: ['listAccounts']
+      },
+      {
+        label: 'cerrar sesion', icon: 'pi pi-sign-out',
+        command: (event: Event) => { this.auth.deleteData() },
+        routerLink: ['login']
+      }
     ]
   }
 

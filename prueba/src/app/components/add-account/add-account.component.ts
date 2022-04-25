@@ -27,13 +27,15 @@ export class AddAccountComponent implements OnInit {
   }
 
   createAccount(): void {
-    this.auth_service.saveAccountNumber( this.account.numeroCuenta)
+    this.auth_service.saveAccountNumber(this.account.numeroCuenta)
     this.api_service.createAccount(this.account)
       .subscribe(
         {
           next: (response: any) => {
             console.log(response)
-          }
+            localStorage.setItem('saldo', this.account.saldo.toString())
+          },
+          error: (response: any) => { console.error(response) }
         }
       )
   }
