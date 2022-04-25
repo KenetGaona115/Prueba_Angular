@@ -8,6 +8,8 @@ import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmationService, SharedModule } from 'primeng/api';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,8 @@ import { ConfirmationService, SharedModule } from 'primeng/api';
     BrowserAnimationsModule,
     AppRoutingModule,
     ComponentsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]

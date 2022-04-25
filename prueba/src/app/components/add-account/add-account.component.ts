@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/interfaces/account.interface';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-account',
@@ -10,21 +11,30 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 export class AddAccountComponent implements OnInit {
 
   account: Account = {
-    numeroCuenta: 0,
-    saldo: 0,
+    numeroCuenta: "",
+    saldo: 0.0,
     idCliente: 0,
     estado: "Activa",
     fechaUltimaAct: this.api_service.getDateFormat()
   };
 
   constructor(
-    private api_service: ApiServiceService
+    private api_service: ApiServiceService,
+    private auth_service: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
   createAccount(): void {
-    console.log(this.account)
+    this.auth_service.saveAccountNumber( this.account.numeroCuenta)
+    this.api_service.createAccount(this.account)
+      .subscribe(
+        {
+          next: (response: any) => {
+            console.log(response)
+          }
+        }
+      )
   }
 }

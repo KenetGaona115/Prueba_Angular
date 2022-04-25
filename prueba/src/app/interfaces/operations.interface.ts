@@ -1,7 +1,7 @@
 export interface Operation {
     fechaUltimaAct: string,
     monto: number;
-    numeroCuenta: number;
+    numeroCuenta: string;
     terminal: string;
     tipo: string;
     usuario: string;

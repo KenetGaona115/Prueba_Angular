@@ -4,8 +4,7 @@
         <p-inputNumber [(ngModel)]="account.idCliente" class="p-inputtext-sm" [format]="false">
         </p-inputNumber>
         <h6>Numero de cuenta</h6>
-        <p-inputNumber [(ngModel)]="account.numeroCuenta" class="p-inputtext-sm" [format]="false">
-        </p-inputNumber>
+        <input type="text" pInputText class="p-inputtext-sm" [(ngModel)]="account.numeroCuenta">
         <h6>Saldo actual</h6>
         <p-inputNumber [(ngModel)]="account.saldo" class="p-inputtext-sm" inputId="locale-us" mode="decimal" locale="en-US" [minFractionDigits]="2" [min]="0">
         </p-inputNumber>
